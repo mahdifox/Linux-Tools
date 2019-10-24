@@ -1,0 +1,24 @@
+#!/bin/bash
+##########################################
+## Created_By_Mahdi_Bagheri_at_2019_Jul ##
+##########################################
+
+################## Usage #################
+##    run script from your Terminal     ##
+##    via start or stop argument        ##
+##########################################
+case "$1" in
+  start)
+    while true; do 
+      sleep 3;
+      rsync -az --delete /PathToProjectSource/SpecificFolder/  /PathToProjectDestination/TheSameSpecificFolder/;
+      # YOU CAN ADD SpecificFolder AS MANY AS YOU WANT BY ADDING ANOTHER LINE LIKE ABOVE INTO WHILE LOOP.
+    done &
+    echo "started"
+	  ;;
+  stop)
+	  kill -9 `ps -aux | grep "synchronize_script" | grep -v "grep" | awk '{print $2}'`
+	  ;;
+  *)
+    echo $"Usage: $0 { start | stop }"
+esac

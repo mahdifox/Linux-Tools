@@ -17,8 +17,8 @@ case "$1" in
         else
             while true; do
                 sleep 3;
-		rsync -az --delete /PathToProjectSource/SpecificFolder/  /PathToProjectDestination/TheSameSpecificFolder/;
-      		# YOU CAN ADD SpecificFolder AS MANY AS YOU WANT BY ADDING ANOTHER LINE LIKE ABOVE INTO WHILE LOOP.
+		rsync -az --delete /PathToProjectSource/SpecificFolder1/  /PathToProjectDestination/TheSameSpecificFolder1/;
+      		# YOU CAN ADD SpecificFolders AS MANY AS YOU WANT BY ADDING ANOTHER LINE LIKE ABOVE INTO WHILE LOOP.
             done &
             echo "started"
         fi

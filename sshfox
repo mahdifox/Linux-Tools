@@ -1,0 +1,11 @@
+#!/bin/bash
+case "$1" in
+      server1)
+          ssh USER@IP $2 
+	        ;;
+      server2)
+	        ssh USER@IP $2
+	        ;;
+      *)
+          echo $"Usage: $0 { server1 | server2 }"
+esac

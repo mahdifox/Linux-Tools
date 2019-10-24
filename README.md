@@ -1,4 +1,4 @@
-# script
-some of my scripts puts here for further usage.
-every one can use it too.
-every comments or bug problems are warmly welcome.
+# My Repository
+some of my files and scripts puts here for further usage.
+every one free to use.
+every comments or bug problems are welcome warmly.

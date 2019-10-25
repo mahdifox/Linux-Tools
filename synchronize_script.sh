@@ -11,7 +11,7 @@ case "$1" in
     start)
         process_id=`ps -aux | grep "synchronize_script" | grep -v "grep" | awk '{print $2}' | awk 'END{ print NR }'`;
         tolerable=3;
-        if [ $my_var -ge $tolerable ]
+        if [ $process_id -ge $tolerable ]
         then
             echo "synchronize_script already started !!!";
         else
@@ -26,7 +26,7 @@ case "$1" in
     stop)
         process_id=`ps -aux | grep "synchronize_script" | grep -v "grep" | awk '{print $2}' | awk 'END{ print NR }'`;
         tolerable=2;
-        if [ $my_var -eq $tolerable ]
+        if [ $process_id -eq $tolerable ]
         then
             echo "no synchronize_script started yet";
         else

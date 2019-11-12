@@ -4,6 +4,6 @@ every one's free to use.
 every comments or bug problems are welcome warmly.
 
 So far 
-synchronize script added :-)
-ssh script added :-)
-go language hot loader added :-)
+synchronize script added <br/>
+ssh script added <br/>
+go language hot loader added <br/>

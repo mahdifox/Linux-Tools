@@ -10,7 +10,7 @@
 case "$1" in
       server1)
           ssh USER@IP $2 
-	        ;;
+	  ;;
       server2)
 	  ssh USER@IP $2
 	  ;;

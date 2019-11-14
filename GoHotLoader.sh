@@ -15,7 +15,7 @@ else
 	fullPath=$1
 	process_id=`ps -aux | grep "$fullPath" | grep -v "grep" | awk '{print $2}' | awk 'END{ print NR }'`;
 	tolerable=2;
-	if [ $process_id -eq $tolerable ]
+	if [ $process_id -eq $tolerable ]server1 | server2 | server3
 	then
 		echo "starting GoHotLoader script"	
 	else
@@ -27,7 +27,7 @@ else
    	go run $fullPath/main.go &
 	while true
 	do
-		sleep 6;
+		sleep 3;
 		newMD5="`find  $fullPath -type f -exec md5sum {} \; | md5sum | awk '{print $1}'`"
 	    	if [ $currentMD5 != $newMD5 ]
 		then

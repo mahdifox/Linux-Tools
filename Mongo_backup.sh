@@ -1,1 +1,2 @@
-mongodump --out=/data/backup/`date +"%Y_%m_%d"`/
+mongodump --out=/data/backup/`date +"%Y%m%d"`/
+sudo rm -rf $(ls -1t | tail -n +8)

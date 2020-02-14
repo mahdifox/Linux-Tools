@@ -11,5 +11,5 @@ mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/weekly/"
 #	'---> /var/backups/mongo_backups/weekly/
 #
 mongodump  --out PATH_TO_YOUR_BACKUPS_FOLDER/weekly/`date +"%Y-%m-%d"`/
-cd "/var/backups/mongobackups/weekly/"
+cd "/PATH_TO_YOUR_BACKUPS_FOLDER/weekly/"
 rm -rf $(ls PATH_TO_YOUR_BACKUPS_FOLDER/weekly/ -1t | tail -n +8)

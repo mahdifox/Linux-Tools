@@ -10,6 +10,6 @@ mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/daily/"
 #	|
 #	'---> /var/backups/mongo_backups/daily/
 #
-mongodump  --out PATH_TO_YOUR_BACKUPS_FOLDER/daily/`date +"%Y-%m-%d"`/
-cd "/var/backups/mongobackups/daily/"
-rm -rf $(ls PATH_TO_YOUR_BACKUPS_FOLDER/daily/ -1t | tail -n +8);
+mongodump  --out /PATH_TO_YOUR_BACKUPS_FOLDER/daily/`date +"%Y-%m-%d"`/
+cd "/PATH_TO_YOUR_BACKUPS_FOLDER/daily/"
+rm -rf $(ls /PATH_TO_YOUR_BACKUPS_FOLDER/daily/ -1t | tail -n +8);

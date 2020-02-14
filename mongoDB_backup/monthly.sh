@@ -11,5 +11,5 @@ mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/monthly/"
 #	'---> /var/backups/mongo_backups/monthly/
 #
 mongodump  --out PATH_TO_YOUR_BACKUPS_FOLDER/monthly/`date +"%Y-%m-%d"`/
-cd "/var/backups/mongobackups/monthly/"
+cd "/PATH_TO_YOUR_BACKUPS_FOLDER/monthly/"
 rm -rf $(ls PATH_TO_YOUR_BACKUPS_FOLDER/monthly/ -1t | tail -n +8)

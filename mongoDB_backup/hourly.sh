@@ -11,5 +11,5 @@ mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/hourly/"
 #	'---> /var/backups/mongo_backups/hourly/
 #
 mongodump  --out PATH_TO_YOUR_BACKUPS_FOLDER/hourly/`date +"%Y-%m-%d_%H:%M:%S"`/
-cd "/var/backups/mongobackups/hourly/"
+cd "/PATH_TO_YOUR_BACKUPS_FOLDER/hourly/"
 rm -rf $(ls PATH_TO_YOUR_BACKUPS_FOLDER/hourly/ -1t | tail -n +25);

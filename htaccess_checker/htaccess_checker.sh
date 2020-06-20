@@ -42,7 +42,7 @@ do
 	if [ -f "${p[$uid]}/public_html/.htaccess" ]
 	then
 	    
-	    # checking a foreign file for php values that must be.
+	    # checking a foreign file named php_value for have a list of illegal php parameters that must not use in user's htaccess.
 	    # !IMPORTANT: the file must be in the same path of this script file.
 	    while read value
 	    do

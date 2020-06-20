@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##########################################
-## Created_By_Mahdi_Bagheri_at_2020_Jan ##
+## Created_By_Mahdi_Bagheri_at_2020_Jun ##
 ##     htaccess checker for prevent     ##
 ##         misuse of resources          ##
 ##########################################

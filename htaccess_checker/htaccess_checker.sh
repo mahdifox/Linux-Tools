@@ -34,7 +34,7 @@ done </etc/passwd
 for uid in "${!p[@]}"
 do
 
-    # checking which users are initial users.
+    # checking which users are usual users.
     if [ $uid -gt 999 ] && [ $uid -lt 60001 ]
     then
 

@@ -35,7 +35,9 @@ for uid in "${!p[@]}"
 do
 
     # checking which users are usual users.
-    if [ $uid -gt 999 ] && [ $uid -lt 60001 ]
+    user_id_min=`cat /etc/login.defs | grep "^UID_MIN" | awk '{print $2}'`
+    user_id_max=`cat /etc/login.defs | grep "^UID_MAX" | awk '{print $2}'`
+    if [ $uid -ge $user_id_min ] && [ $uid -lt $user_id_max ]
     then
 
 	# checking if .htaccess file exists in the user's home directory or not.

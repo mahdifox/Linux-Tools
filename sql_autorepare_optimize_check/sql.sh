@@ -35,7 +35,7 @@ mysql -u$dbuser -p$dbpass -e 'show databases;' | grep -v "|" | grep -v "Database
 update=$1;
 if [[ ! -z $update ]]
 then
-		logpath="/var/www/html/buildlog/";
+		logpath="/var/www/html/SQL_script";
 		mkdir -p  "$logpath";
 
 	if [ $update == "all" ]

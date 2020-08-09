@@ -41,15 +41,12 @@ then
 		mkdir -p  "$logpath";
 
 	if [ $update == "all" ]
-		then
+	then
 		echo -e "${GREEN} waiting for fetching all databases ... ${NC}";
-			echo -e "${GREEN} done ${NC}";
+		echo -e "${GREEN} done ${NC}";
 		while read line
 		do
-				#mysqlcheck -u$dbuser -p$dbpass --auto-repair $line
-				#mysqlcheck -u$dbuser -p$dbpass --optimize $line
-				#mysqlcheck -u$dbuser -p$dbpass --check $line
-			echo "$line done";
+			mysqlcheck -u$dbuser -p$dbpass --auto-repair $line && mysqlcheck -u$dbuser -p$dbpass --optimize $line && mysqlcheck -u$dbuser -p$dbpass --check $line
 			if [ $? -eq 0 ]
 				then
 					mkdir -p "$logpath/`date "+%Y-%m-%d"`";
@@ -65,19 +62,17 @@ then
 		while read line2
 		do
 			if [ $update == $line2 ]
-				#mysqlcheck -u$dbuser -p$dbpass --auto-repair $line2
-				#mysqlcheck -u$dbuser -p$dbpass --optimize $line2
-				#mysqlcheck -u$dbuser -p$dbpass --check $line2
-				echo "$line2 done";
+				mysqlcheck -u$dbuser -p$dbpass --auto-repair $line2 && mysqlcheck -u$dbuser -p$dbpass --optimize $line2 && mysqlcheck -u$dbuser -p$dbpass --check $line2
 				if [ $? -eq 0 ]
-					then
-							mkdir -p "$logpath/`date "+%Y-%m-%d"`";
-							now_time=`date "+%T"`;
-							echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
-					else
-							mkdir -p "$logpath/`date "+%Y-%m-%d"`";
-							now_time=`date "+%T"`;
-				fi			echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
+				then
+					mkdir -p "$logpath/`date "+%Y-%m-%d"`";
+					now_time=`date "+%T"`;
+					echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
+				else
+					mkdir -p "$logpath/`date "+%Y-%m-%d"`";
+					now_time=`date "+%T"`;
+					echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
+				fi
 			fi
 		done<$MY_PATH/all_dbs;
 	fi
@@ -90,4 +85,3 @@ else
 	done<$MY_PATH/all_dbs;
 	echo $"Usage: $0 { "$available_dbs"all }";
 fi
-

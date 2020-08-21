@@ -10,7 +10,7 @@
 ##########################################
 while true
 do
-	if ! nc -w 1 -z localhost 4041
+	if ! nc -w 1 -z localhost 2222
 	then
 		service directadmin restart;
 		sleep 15;

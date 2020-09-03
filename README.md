@@ -10,3 +10,7 @@ go language hot loader added <br/>
 MongoDB backup and restore added <br/>
 htaccess_checker added <br/>
 Direct_admin custom build script added <br/>
+checking Direct admin is up added <br/>
+php disable_functions_checker added <br/>
+linux resolvers_checker added <br/>
+sql_autorepair_optimize_check for all or once added <br/>

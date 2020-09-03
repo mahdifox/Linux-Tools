@@ -66,11 +66,11 @@ then
                                 then
                                         mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                         now_time=`date "+%T"`;
-                                        echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
+                                        echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
                                 else
                                         mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                         now_time=`date "+%T"`;
-                                        echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
+                                        echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
                                 fi
 
                         else
@@ -79,11 +79,11 @@ then
                                 then
                                         mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                         now_time=`date "+%T"`;
-                                        echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
+                                        echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
                                 else
                                         mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                                                                 now_time=`date "+%T"`;
-                                        echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
+                                        echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
                                 fi
                         fi
                 done<$MY_PATH/all_dbs;
@@ -91,6 +91,7 @@ then
                 while read line2
                 do
                         if [ $update == $line2 ]
+                                                then
                                 if [ $dbuser == "cpanel" ] && [ $dbpass == "cpanel" ]
                                 then
                                         mysqlcheck --auto-repair $line2 && mysqlcheck --optimize $line2 && mysqlcheck --check $line2
@@ -98,11 +99,11 @@ then
                                         then
                                                 mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                                 now_time=`date "+%T"`;
-                                                echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
+                                                echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
                                         else
                                                 mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                                 now_time=`date "+%T"`;
-                                                echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
+                                                echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
                                         fi
                                 else
                                         mysqlcheck -u$dbuser -p$dbpass --auto-repair $line2 && mysqlcheck -u$dbuser -p$dbpass --optimize $line2 && mysqlcheck -u$dbuser -p$dbpass --check $line2
@@ -110,11 +111,11 @@ then
                                         then
                                                 mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                                 now_time=`date "+%T"`;
-                                                echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
+                                                echo -e "auto-repair, optimize and check ${GREEN}done${NC} for ${GREEN}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.log";
                                         else
                                                 mkdir -p "$logpath/`date "+%Y-%m-%d"`";
                                                 now_time=`date "+%T"`;
-                                                echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" > "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
+                                                echo -e "auto-repair, optimize and check ${RED}failed${NC} for ${RED}$line${NC} database at ${BOLD}$now_time${NORMAL}" >> "$logpath/`date "+%Y-%m-%d"`/sql_script.err.log";
                                         fi
                                 fi
                         fi

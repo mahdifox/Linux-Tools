@@ -21,9 +21,9 @@ if [ -z "$MY_PATH" ] ; then
 fi
 
 #define color for print or echo
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m'
+GREEN='\033[0;32m';
+RED='\033[0;31m';
+NC='\033[0m';
 
 # log file path defines here.
 LOG_PATH="/var/log/htaccess_checker";
@@ -51,28 +51,57 @@ do
                         # geting exact username in USERNAME variable.
                         USERNAME=`echo "${p[$uid]}" |cut -d\/ -f3`;
                         # checking if username is one of clients.
-                        if [ $USERNAME != "mahdi" ]
+                        if [ $USERNAME != "admin" ]
                         then
-                                # checking if .htaccess file exists in user's public_html or sub-directories and store them to .all_htaccess under user's home-directory.
-                                if grep -q "$php_value" "${p[$uid]}/.htaccess"
+                                # fetching all subdomains according to directadmin files
+                                if [ -f /usr/local/directadmin/data/users/$USERNAME/domains/*.subdomains ]
                                 then
-                                        ht_path="${p[$uid]}/.htaccess"
-                                        # delete the illegal php_value in ht_path .htaccess file.
-                                        sed "/$php_value/d" -i "$ht_path";
-                                        # geting now date for log exact time
-                                        now_date=`date "+%T %Y-%m-%d"`;
-                                        # printing  event log in the log file defined at the top of script ( $LOG_PATH/blocked ).
-                                        echo -e "The user ${RED}$USERNAME${NC} has been blocked, illegal using of ${RED}$php_value${NC} value in ${RED}$ht_path${NC} file at ${GREEN}$now_date${NC}\n" >> "$LOG_PATH/blocked";
+                                        cat /usr/local/directadmin/data/users/$USERNAME/domains/*.subdomains>$MY_PATH/all_user_subdomains;
                                 fi
-                                if grep -q "$php_value" "${p[$uid]}/.htaccess"
-                                        ht_path="${p[$uid]}/.htaccess"
-                                        # delete the illegal php_value in ht_path .htaccess file.
-                                        sed "/$php_value/d" -i "$ht_path";
-                                        # geting now date for log exact time
-                                        now_date=`date "+%T %Y-%m-%d"`;
-                                        # printing  event log in the log file defined at the top of script ( $LOG_PATH/blocked ).
-                                        echo -e "The user ${RED}$USERNAME${NC} has been blocked, illegal using of ${RED}$php_value${NC} value in ${RED}$ht_path${NC} file at ${GREEN}$now_date${NC}\n" >> "$LOG_PATH/blocked";
+                                # checking if .htaccess file exists in user's public_html or sub-directories and store them to .all_htaccess under user's home-directory.
+                                if [ -f ${p[$uid]}/.htaccess ]
+                                then
+                                        if grep -q "$php_value" "${p[$uid]}/.htaccess">/dev/null
+                                        then
+                                                ht_path="${p[$uid]}/.htaccess"
+                                                # delete the illegal php_value in ht_path .htaccess file.
+                                                sed "/$php_value/d" -i "$ht_path";
+                                                # geting now date for log exact time
+                                                now_date=`date "+%T %Y-%m-%d"`;
+                                                # printing  event log in the log file defined at the top of script ( $LOG_PATH/blocked ).
+                                                echo -e "The user ${RED}$USERNAME${NC} has been blocked, illegal using of ${RED}$php_value${NC} value in ${RED}$ht_path${NC} file at ${GREEN}$now_date${NC}\n" >> "$LOG_PATH/blocked";
+                                        fi
                                 fi
+                                if [ -f ${p[$uid]}/public_html/.htaccess ]
+                                then
+                                        if grep -q "$php_value" "${p[$uid]}/public_html/.htaccess"
+                                        then
+                                                ht_path="${p[$uid]}/public_html/.htaccess"
+                                                # delete the illegal php_value in ht_path .htaccess file.
+                                                sed "/$php_value/d" -i "$ht_path";
+                                                # geting now date for log exact time
+                                                now_date=`date "+%T %Y-%m-%d"`;
+                                                # printing  event log in the log file defined at the top of script ( $LOG_PATH/blocked ).
+                                                echo -e "The user ${RED}$USERNAME${NC} has been blocked, illegal using of ${RED}$php_value${NC} value in ${RED}$ht_path${NC} file at ${GREEN}$now_date${NC}\n" >> "$LOG_PATH/blocked";
+                                        fi
+                                fi
+                                while read line
+                                do
+                                        if [ -f ${p[$uid]}/public_html/$line/.htaccess ]
+                                        then
+                                                if grep -q "$php_value" "${p[$uid]}/public_html/$line/.htaccess"
+                                                then
+                                                        ht_path="${p[$uid]}/public_html/$line/.htaccess"
+                                                        # delete the illegal php_value in ht_path .htaccess file.
+                                                        sed "/$php_value/d" -i "$ht_path";
+                                                        # geting now date for log exact time
+                                                        now_date=`date "+%T %Y-%m-%d"`;
+                                                        # printing  event log in the log file defined at the top of script ( $LOG_PATH/blocked ).
+                                                        echo -e "The user ${RED}$USERNAME${NC} has been blocked, illegal using of ${RED}$php_value${NC} value in ${RED}$ht_path${NC} file at ${GREEN}$now_date${NC}\n" >> "$LOG_PATH/blocked";
+                                                fi
+
+                                        fi
+                                done<$MY_PATH/all_user_subdomains;
                         fi
                 fi
         done

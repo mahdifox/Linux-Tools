@@ -31,8 +31,10 @@ NC='\033[0m'
 # get all php.ini path according to directadmin
 /usr/local/directadmin/custombuild/build used_configs  2>/dev/null | grep "php.ini" | awk '{print $5}' > "$MY_PATH/all_iniPath";
 
+# define correct disable_function
+correct_disable_functions="disable_functions = exec,system,passthru,shell_exec,proc_close,proc_open,dl,popen,show_source,posix_kill,posix_mkfifo,posix_getpwuid,posix_setpgid,posix_setsid,posix_setuid,posix_setgid,posix_seteuid,posix_setegid,posix_uname";
+
 while read line
 do
-	correct_disable_functions="disable_functions = exec,system,passthru,shell_exec,proc_close,proc_open,dl,popen,show_source,posix_kill,posix_mkfifo,posix_getpwuid,posix_setpgid,posix_setsid,posix_setuid,posix_setgid,posix_seteuid,posix_setegid,posix_uname";
-	sed -e  "s/.*disable_functions = .*/$correct_disable_functions/" -i  $line
+        sed -e  "s/.*disable_function.*/$correct_disable_functions/" -i $line
 done < $MY_PATH/all_iniPath

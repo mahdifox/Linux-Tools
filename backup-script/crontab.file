@@ -1,0 +1,17 @@
+##########################################
+## Created_By_Mahdi_Bagheri_at_2021_Apr ##
+##            backup crontab            ##
+##########################################
+
+################# Usage ##################
+## put this on your crontab settings,   ##
+## run -> crontab -e the paste these    ##
+##########################################
+
+
+#Mins           Hours           DOM             MON             DOW             Command
+
+#host_master
+0               1               *               *               *               ~/scripts/daily.sh
+0               1               *               *               7               ~/scripts/weekly.sh
+0               1               1               *               *               ~/scripts/monthly.sh

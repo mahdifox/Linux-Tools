@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ##########################################
 ## Created_By_Mahdi_Bagheri_at_2021_Apr ##
 ##     on host that must backed up      ##
@@ -7,7 +5,6 @@
 
 ################# Usage ##################
 ##        run script with script        ##
-##          from backup-server          ##
 ##########################################
 
 #specify path you want containers backed up.

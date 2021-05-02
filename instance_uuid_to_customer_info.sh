@@ -66,3 +66,21 @@ fi
 
 #remove tmp file 
 rm -f /root/.tmp.txt
+
+#########################RESULT#############################
+#root@controller:~# ./openstack/instance_uuid_to_customer_info.sh
+#+--------------------------------------+---------------+----------------------------------+---------+------------+-------------+---------------------------------+
+#| ID                                   | Name          | Tenant ID                        | Status  | Task State | Power State | Networks                        |
+#+--------------------------------------+---------------+----------------------------------+---------+------------+-------------+---------------------------------+
+#| 5e123456-3b66-47d6-b623-93a36a123456 | name1         | xxxxxxxxxxxxxxxxx8yyyyyyyyyyyyyy | SHUTOFF | -          | Running     | net-lan=xxx.xxx.xxx.xxx         |
+#| 55123456-0598-46fa-b417-2a8c30123456 | name2         | xxxxxxxxxxxxxxxxxdyyyyyyyyyyyyyy | ACTIVE  | -          | Running     | net-lan=xxx.xxx.xxx.xxx         |
+#+--------------------------------------+---------------+----------------------------------+---------+------------+-------------+---------------------------------+
+#please input uuid of vm you wish to get user-email-address from:
+#
+#5e123456-3b66-47d6-b623-93a36a123456
+#
+#email:        mahdifox2000@mail.com
+#firstname:    mahdi
+#surname:      bagheri
+#national_id:  0987654321
+#mobile:       +989376028183

@@ -37,6 +37,8 @@ git clone https://github.com/laravel/laravel.git myapp/
 
 cd myapp/
 
+docker login
+
 docker run --rm -v $(pwd):/app composer install
 
 sudo chown -R $USER:$USER ~/myapp

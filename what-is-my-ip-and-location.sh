@@ -13,4 +13,6 @@ then
 	apt update;
 	apt install whois;
 fi
+echo "ip:"
+dig @resolver4.opendns.com myip.opendns.com +short
 whois $(dig @resolver4.opendns.com myip.opendns.com +short) | grep -i '^country:\|^descr:\|^address:'

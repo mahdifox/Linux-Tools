@@ -17,6 +17,8 @@ GREEN='\033[0;32m';
 RED='\033[0;31m';
 NC='\033[0m';
 
+username=$(whoami);
+
 MY_PATH="`( cd \"$MY_PATH\" && pwd )`"  # absolutized and normalized
 if [ -z "$MY_PATH" ] ; then
   # error; for some reason, the path is not accessible
@@ -27,19 +29,19 @@ fi
 
 case "$1" in
       normal_all_db)
-          mongorestore --host 157.90.202.80 --port 27017 --username admin --password Secret1230123 --authenticationDatabase admin $2
+          mongorestore --host IP --port PORT --username USERNAME --password PASSWORD --authenticationDatabase admin $2
 	  ;;
       drop_all_db)
-	  mongorestore --drop --host 157.90.202.80 --port 27017 --username admin --password Secret1230123 --authenticationDatabase admin $2
+	  mongorestore --drop --host IP --port PORT --username USERNAME --password PASSWORD --authenticationDatabase admin $2
 	  ;;
       normal_with_specific_db_name)
-	  mongorestore --host 157.90.202.80 --port 27017 --username admin --password Secret1230123 --authenticationDatabase admin --db $2 $3
+	  mongorestore --host IP --port PORT --username USERNAME --password PASSWORD --authenticationDatabase admin --db $2 $3
 	  ;;
       drop_with_specific_db_name)
-	  mongorestore --drop --host 157.90.202.80 --port 27017 --username admin --password Secret1230123 --authenticationDatabase admin --db $2 $3
+	  mongorestore --drop --host IP --port PORT --username USERNAME --password PASSWORD --authenticationDatabase admin --db $2 $3
 	  ;;
       *)
-          echo -e $"${YELLOW}Usage:${NC} ${GREEN}root@mahan:$MY_PATH# $0 [ARGUMENT-1] [ARGUMENT-2] [ARGUMENT-3] ${NC}"
+          echo -e $"${YELLOW}Usage:${NC} ${GREEN}root@$username:$MY_PATH# $0 [ARGUMENT-1] [ARGUMENT-2] [ARGUMENT-3] ${NC}"
 	  	  
 		 echo ""
 

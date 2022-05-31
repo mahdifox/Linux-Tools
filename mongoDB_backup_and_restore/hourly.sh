@@ -1,8 +1,8 @@
 #!/bin/bash
 ##########################################
-## Created_By_Mahdi_Bagheri_at_2020_Feb ##
+## Created_By_Mahdi_Bagheri_at_2022_JUN ##
 ##########################################
-mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/hourly/"
+mkdir -p "/PATH_TO_BACKUP/hourly/"
 #
 #	 ------------------e.g.----------------
 #	|
@@ -10,6 +10,6 @@ mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/hourly/"
 #	|
 #	'---> /var/backups/mongo_backups/hourly/
 #
-mongodump  --out PATH_TO_YOUR_BACKUPS_FOLDER/hourly/`date +"%Y-%m-%d_%H:%M:%S"`/
-cd "/PATH_TO_YOUR_BACKUPS_FOLDER/hourly/"
-rm -rf $(ls PATH_TO_YOUR_BACKUPS_FOLDER/hourly/ -1t | tail -n +25);
+mongodump --forceTableScan --host IP --port PORT --username USERNAME --password PASSWORD --authenticationDatabase admin --out /PATH_TO_BACKUP/hourly/`date +"%Y-%m-%d_%H:%M:%S"`/
+cd "/PATH_TO_BACKUP/hourly/"
+rm -rf $(ls /PATH_TO_BACKUP/hourly/ -1t | tail -n +25);

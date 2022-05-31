@@ -1,8 +1,8 @@
 #!/bin/bash
 ##########################################
-## Created_By_Mahdi_Bagheri_at_2020_Feb ##
+## Created_By_Mahdi_Bagheri_at_2022_JUN ##
 ##########################################
-mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/monthly/"
+mkdir -p "/PATH_TO_BACKUP/monthly/"
 #
 #	 ------------------e.g.-----------------
 #	|
@@ -10,6 +10,6 @@ mkdir -p "/PATH_TO_YOUR_BACKUPS_FOLDER/monthly/"
 #	|
 #	'---> /var/backups/mongo_backups/monthly/
 #
-mongodump  --out PATH_TO_YOUR_BACKUPS_FOLDER/monthly/`date +"%Y-%m-%d"`/
-cd "/PATH_TO_YOUR_BACKUPS_FOLDER/monthly/"
-rm -rf $(ls PATH_TO_YOUR_BACKUPS_FOLDER/monthly/ -1t | tail -n +8)
+mongodump --forceTableScan --host IP --port PORT --username USERNAME --password PASSWORD --authenticationDatabase admin --out /PATH_TO_BACKUP/monthly/`date +"%Y-%m-%d"`/
+cd "/PATH_TO_BACKUP/monthly/"
+rm -rf $(ls /PATH_TO_BACKUP/monthly/ -1t | tail -n +8)
